@@ -62,7 +62,8 @@ def evaluate_performance(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
 
     # True Negative Rate
     results["tnr"] = safe_division(tn, label_neg)
-    assert results["tnr"] + results["fpr"] == 1
+    if results["tnr"] + results["fpr"] != 0:
+        assert results["tnr"] + results["fpr"] == 1
 
     # Precision
     results["precision"] = safe_division(tp, pred_pos)
